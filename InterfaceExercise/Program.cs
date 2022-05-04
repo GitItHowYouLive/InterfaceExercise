@@ -39,6 +39,22 @@ namespace InterfaceExercise
 
             //Now, create objects of your 3 classes and give their members values;
             //Creatively display and organize their values
+
+            var explorer = new SUV() { ThirdRow = false, TowingCapacity = 3500, Slogan = "Built Ford Tough", Engine = "gas", Wheels = 4, ConsumerRating = 3.6 };
+            var silverado = new Truck() { IsLifted = true, BedType = "long", Slogan = "Like a Rock", Wheels = 6, Engine = "diesel", ConsumerRating = 4.8 };
+            var prius = new Car() { TopSpeed = 78, Convertible = false, Wheels = 4, Engine = "hybrid", Slogan = "Forward", ConsumerRating = 4.5 };
+
+            var inventory = new object[] {explorer, silverado, prius};
+
+            foreach (var item in inventory)
+            {
+                Console.WriteLine(item);
+                foreach(var thing in item.GetType().GetProperties())
+                {
+                    Console.WriteLine(thing.Name + " : " + thing.GetValue(item));
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
